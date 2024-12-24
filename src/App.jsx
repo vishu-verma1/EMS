@@ -6,22 +6,35 @@ import { getLocalStorage, setLocalStorage } from "./utils/localStorage";
 import { AuthContext } from "./context/AuthProvider";
 const App = () => {
   const [user, setUser] = useState(null);
+  const authData = useContext(AuthContext);
 
-  const handleLogin = (email, password) => {
+  useEffect(
+    (authData) => {
+      const loggedInUser = localStorage.getItem("loggedInUser");
+      if (loggedInUser) {
+        setUser(loggedInUser.role);
+      }
+    },
+    [authData]
+  );
+
+  const handgiteLogin = (email, password) => {
     if (email == "admin@example.com" && password == "123") {
       setUser("admin");
-    } else if (email == "employee1@example.com" && password == "123") {
+      localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+    } else if (
+      authData &&
+      authData.employees.find((e) => email == e.email && password == e.password)
+    ) {
       setUser("employee");
+      localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify({ role: "employee" })
+      );
     } else {
       alert("Invalid credentials");
     }
   };
-
-  const data = useContext(AuthContext);
-  console.log(data);
-  
-
-
 
   return (
     <>

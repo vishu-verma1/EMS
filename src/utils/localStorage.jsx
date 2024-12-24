@@ -202,8 +202,8 @@ export const setLocalStorage = ()=>{                                          //
 }
 
 export const getLocalStorage = ()=>{                                          // getLocalStorage function is used to get the employees and admin data from the local storage.
- const employess = JSON.parse( localStorage.getItem("employees"));
+ const employees = JSON.parse( localStorage.getItem("employees"));
  const admin = JSON.parse(localStorage.getItem("admin"));
-    console.log(employess);
+   return ({employees, admin});
  
 }
