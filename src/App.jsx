@@ -48,7 +48,7 @@ const App = () => {
       {!user ? <Login handleLogin={handleLogin} /> : ""}{" "}
       {/* if user is not logged in then show login page else show dashboard */}
       {user == "admin" ? (
-        <AdminDashboard changeUser={setUser} />
+        <AdminDashboard changeUser={setUser}  />
       ) : user == "employee" ? (
         <EmployeeDashboard changeUser={setUser} data={loggedInUserData} />
       ) : null}
