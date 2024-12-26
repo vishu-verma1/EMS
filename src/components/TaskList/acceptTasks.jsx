@@ -1,7 +1,7 @@
 import React from "react";
 
 const AcceptTasks = ({data}) => {
-  console.log(data);
+
   
   return (
     <div className="bg-[#00ADB5] p-3 h-full w-full sm:w-[280px] md:w-[350px] lg:w-[400px] rounded-lg flex-shrink-0 flex flex-col">
